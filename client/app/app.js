@@ -12,7 +12,10 @@ angular.module('boorishpenguin', [
       templateUrl: 'app/ask/ask.html',
       controller: 'askController'
     })
-    .when('/answers', {
+    .when('/questions', {
+      templateUrl: 'app/questions/questions.html'
+    })
+    .when('/questions/:id', {
       templateUrl: 'app/answers/answers.html'
     })
     .otherwise({

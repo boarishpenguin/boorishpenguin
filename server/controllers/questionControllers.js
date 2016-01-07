@@ -13,7 +13,7 @@ module.exports = {
   },
 
   readQuestion: function() {
-    console.log('get request for question received');
+    console.log('get request for question received', res.body);
   },
 
   modQuestion: function() {

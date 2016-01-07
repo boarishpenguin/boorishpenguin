@@ -5,7 +5,7 @@ var userControllers = require ('../controllers/userControllers.js');
 module.exports = function(app, express) {
   app.get('/townhall/questions', questionControllers.allQuestions);
   app.post('/townhall/ask', questionControllers.newQuestion);
-  app.delete('/townhall/questions', questionControllers.deleteQuestion);
+  // app.delete('/townhall/questions', questionControllers.deleteQuestion);
 
   app.get('/townhall/questions/:id', questionControllers.readQuestion);
   app.post('/townhall/questions/:id', questionControllers.modQuestion);

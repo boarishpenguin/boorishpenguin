@@ -1,6 +1,6 @@
 angular.module('boorish.services', [])
 
-.factory('Questions', function($http) {
+.factory('Questions', function($http, $location) {
   return {
     // add a question from /ask
     addQuestion: function(question) {
@@ -25,14 +25,14 @@ angular.module('boorish.services', [])
     getAllQuestions: function() {
       return $http({
         method: 'GET',
-        url: '/townhall/questions'
+        url: '/townhall/questions/'
       })
       .then(function(res) {
         return res.data;
       })
     },
 
-    getQuestion: function(questionID) { // TODO: Ask Steven about how to send this GET
+    getQuestion: function($location) { // TODO: Ask Steven about how to send this GET
       return $http({
         method: 'GET',
         url: '/townhall/questions/:id'
