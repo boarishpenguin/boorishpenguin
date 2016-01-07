@@ -1,0 +1,17 @@
+<div ng-module='boorish.answers'>
+  <div ng-repeat='answer in answers'>
+    <div>
+      <input type='submit' ng-click='likeAnswer()' value='like'>
+      <div>{{ answer.points }}</div>
+      <div>{{ answer.text }}</div>
+    </div>
+  </div>
+</div>
+<div>
+  <form>
+    <textarea type='question' rows='5' cols='80' ng-model='question.question'></textarea></br>
+  </form>
+  <input type='submit' ng-click='Questions.likeQuestion()' value='like'>
+  <input type='submit' value='Cancel'>
+  <input type='submit' formmethod='post' value='Ask question'>
+</div>

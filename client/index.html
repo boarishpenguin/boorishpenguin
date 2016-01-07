@@ -3,17 +3,18 @@
   <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>-->
     <script src="userController.js"></script>
   </head>
-  <body ng-controller="UserController">
-    <!--<div ng-view></div>-->
-    <ul>
-      <li ng-repeat="user in users">
-        <span>{{user.name}}</span>
-      </li>
-    </ul>
+  <body>
+    <div ng-view></div>
 
+    <script src="app/questions/questions.js"></script>
+    <script src="app/answers/answers.js"></script>
+    <script src="app/app.js"></script>
+  </body>
+  <!-- lib scripts -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="lib/underscore/underscore-min.js"></script>
   </body>
 </html>
