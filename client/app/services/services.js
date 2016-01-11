@@ -4,7 +4,7 @@ angular.module('boorish.services', [])
   return {
     // add a question from /ask
     addQuestion: function(question) {
-  
+
       return $http({
         method: 'POST',
         url: '/townhall/questions',
@@ -12,13 +12,14 @@ angular.module('boorish.services', [])
           text: question.text,
           id_user: question.userId,
           course: question.course,  // these are not setup yet
-          tag: question.tag  // these are not setup yet
+          tag: question.tag,  // these are not setup yet
+          title: question.title
         })
       })
     },
 
     getAllQuestions: function() {
-    
+
       return $http({
         method: 'GET',
         url: '/townhall/questions/'
@@ -101,7 +102,7 @@ angular.module('boorish.services', [])
         url: 'townhall/answers/' + answerID
       })
     }
-    
+
   }
 })
 
