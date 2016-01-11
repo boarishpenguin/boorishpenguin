@@ -4,8 +4,8 @@ var UCtrl = require('./userControllers.js');
 module.exports = {
   newAnswer: function(req, res) {
     var txt = req.body.text;
-    var uname = req.body.person;
-    var qid = req.body.id_Question;
+    var reqName = req.user.profile.emails[0].value;
+    var qid = req.body.id_question;
 
     db.Post.findById(qid)
     .then(function(question) {
@@ -16,7 +16,7 @@ module.exports = {
         .then(function() {
           return db.User.findOne({
             where: {
-              username: uname,
+              username: reqName,
             }
           })
         })
@@ -31,7 +31,7 @@ module.exports = {
           })
           .then(function(answer) {
             user.update({
-              points: user.points
+              points: user.points + 1
             })
             .then(function() {
               res.status(201).json(answer);

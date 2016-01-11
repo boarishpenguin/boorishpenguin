@@ -1,7 +1,7 @@
 <div ng-module='boorish.answers'>
   <div ng-model='data.question'>
-    <input type='submit' ng-click='updateQuestion("like")' value='like'>
-    <input type='submit' ng-click='updateQuestion("good")' value='Good'>
+    <input type='submit' ng-click='updateQuestion("like")' value='Like'>
+    <input type='submit' ng-click='updateQuestion("good")' value='Good Question!'>
     <input type='submit' ng-click='updateQuestion("answered")' value='Answered'>
     <div>{{ data.question.points }}</div>
     <div>{{ data.question.text }}</div>
@@ -13,15 +13,14 @@
   </div>
   <div ng-model='data.answers'>
     <div ng-repeat='answer in data.answers'>
-      <input type='submit' ng-click='updateAnswer($index, "like")' value='like'>
-      <input type='submit' ng-click='updateAnswer($index, "good")' value='like'>
-      <input type='submit' ng-click='updateAnswer($index, "answered")' value='Answered'>
+      <input type='submit' ng-click='updateAnswer($index, "like")' value='Like'>
+      <input type='submit' ng-click='updateAnswer($index, "good")' value='Good Answer!'>
       <div>{{ answer.points }}</div>
       <div>{{ answer.text }}</div>
       <div>{{ answer.user }}</div>
       <div>{{ answer.tag }}</div>
       <div>{{ answer.isGood }}</div>
-      <input type='submit' on-click='removeAnswer($index)' value='remove'>
+      <input type='submit' ng-click='removeAnswer($index)' value='remove'>
     </div>
   </div>
   <div>
