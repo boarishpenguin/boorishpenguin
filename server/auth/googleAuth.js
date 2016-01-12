@@ -24,7 +24,7 @@ exports.signup = function (profileObj, callback){
   // Email set as username to make sure each username is unique.
   // Usernames are used to find to find specific user(s) in the database
   // Suggested Improvement: Make this a token or id saved in the database for each user.
-  
+
   user.picture = profileObj.profile._json.image.url;
 
   // Other Attributes Google Provides that you may want to utilize
@@ -38,5 +38,7 @@ exports.signup = function (profileObj, callback){
 };
 
 exports.login = function (profileObj, callback){
+  // successfully logged in
+  // if you want to do actions everytime a user logs in add it here
   return callback(null, profileObj);
 };
