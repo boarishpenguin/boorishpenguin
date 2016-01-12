@@ -31,7 +31,7 @@ angular.module('boorish.services', [])
       })
     },
 
-    getQuestion: function(path) { 
+    getQuestion: function(path) {
       return $http({
         method: 'GET',
         url: '/townhall' + path
@@ -162,7 +162,7 @@ angular.module('boorish.services', [])
 // Tags and Course factories just pull Tags and Courses from the database
 
 .factory('Tags', function($http) {
-  
+
   return {
 
     getTags: function() {
@@ -179,7 +179,7 @@ angular.module('boorish.services', [])
 })
 
 .factory('Courses', function($http) {
-  
+
   return {
 
     getCourses: function() {
@@ -200,13 +200,14 @@ angular.module('boorish.services', [])
   var user = {};
 
   return {
-    
+
     setUser: function () {
       return $http({
         method: 'GET',
         url: '/user'
       })
       .then(function (res) {
+        console.log('res: ', res);
         user.google = res.data.email || res.data.profile.emails[0].value;
 
         return $http({
