@@ -9,13 +9,14 @@ module.exports = {
       var formattedUsers = users.map(function(user) {
         return {
           id: user.id,
-          isTeacher: user.isTeacher,
+          isTeacher: user.isTeacher,//change this to role
           name: user.name,
-          name_first: user.name_last,
-          name_last: user.name_first,
+          name_first: user.name_first,
+          name_last: user.name_last,
           email: user.email,
           points: user.points,
-          image: user.image
+          image: user.picture,
+          RoleId: user.RoleId
         }
       });
 
@@ -34,11 +35,12 @@ module.exports = {
         id: user.id,
         isTeacher: user.isTeacher,
         name: user.name,
-        name_first: user.name_last,
-        name_last: user.name_first,
+        name_first: user.name_first,
+        name_last: user.name_last,
         email: user.email,
         points: user.points,
-        image: user.image
+        image: user.picture,
+        RoleId: user.RoleId
       }
 
       user = {};
@@ -46,6 +48,49 @@ module.exports = {
       res.json(user);
     });
   },
+
+  readRole: function(req, res) {
+    roleId = req.params.roleId;//pulls the roleId from the route
+    db.User.findAll({
+      where: {
+        RoleId: roleId
+      }
+    })
+    .then(function(users) {
+      var formattedUsers = users.map(function(user) {
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email
+        }
+      });
+
+      userRoles = {};
+      userRoles.results = formattedUsers;
+      res.json(userRoles);
+    })
+  },
+
+  
+  modUser: function(req, res){
+    var body = req.body
+    console.log(body.id);
+
+    db.User.findById(body.id)
+    .then(function(user){
+      user.update({
+        username: body.username,
+        name: body.name,
+        name_last: body.name_last,
+        name_first: body.name_first,
+        email: body.email,
+        RoleId: body.RoleId
+      }).then(function() {
+          res.status(201).json(user);
+      })
+    });
+  },
+
 
   newUser: function(user) {
     db.User.create(user)
@@ -66,8 +111,8 @@ module.exports = {
     });
   },
 
-  isUserTeacher: function(uname, callback) {
-    db.User.find({
+  isUserTeacher: function(uname, callback) { //TODO: figure out where this shit is used and take it out/edit it to work with the new roles table.
+    db.User.find({//this is used in modAnswer in the Answer Controller.
       where: {
         username: uname
       }
